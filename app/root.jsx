@@ -2,6 +2,8 @@ import {getShopAnalytics} from '@shopify/hydrogen';
 import {Outlet, useRouteError, isRouteErrorResponse} from '@remix-run/react';
 import favicon from '~/assets/favicon.svg';
 import {FOOTER_QUERY, HEADER_QUERY} from '~/lib/fragments';
+import {MENU_QUERY} from '~/lib/shopify-queries';
+
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -89,7 +91,7 @@ async function loadCriticalData({context}) {
     storefront.query(HEADER_QUERY, {
       cache: storefront.CacheLong(),
       variables: {
-        headerMenuHandle: 'main-menu', // Adjust to your header menu handle
+        headerMenuHandle: 'shubham-menu', // Adjust to your header menu handle
       },
     }),
     // Add other queries here, so that they are loaded in parallel
