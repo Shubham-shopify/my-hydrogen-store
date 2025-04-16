@@ -1,0 +1,76 @@
+.announcement-bar {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  letter-spacing: 0.01em;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.top-bar {
+  padding: 0.5rem 1rem;
+  background-color: #e57560;
+  color: white;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+}
+
+.countdown-timer {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin: 0 10px;
+  white-space: nowrap; /* Keeps the text on a single line */
+}
+
+.bottom-bar {
+  padding: 0.7rem 2rem;
+  background-color: #f9f0e3;
+  color: #4a3a2e;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.star {
+  color: #00b67a;
+  font-size: 1.1em;
+  vertical-align: middle;
+  margin-right: 0.2em;
+}
+
+@media (max-width: 768px) {
+  .bottom-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+  }
+  
+  .bottom-bar span {
+    width: 100%;
+  }
+}
+
+/* Additional styles to match the image content */
+.top-bar span {
+  margin: 0 5px;
+}
+
+.bottom-bar span {
+  display: inline-block;
+}
+
+.bottom-bar .guarantee {
+  font-weight: 500;
+}
+
+.bottom-bar .rating {
+  font-weight: 500;
+}
+
+.bottom-bar .offer {
+  font-weight: 500;
+}
