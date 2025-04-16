@@ -44,14 +44,25 @@
 
 @media (max-width: 768px) {
   .bottom-bar {
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.5rem;
     padding: 0.7rem 1rem;
   }
-  
-  .bottom-bar span {
-    width: 100%;
+
+  .bottom-bar .guarantee{
+    display: none;
   }
+
+.trustpilot{
+  display: flex!important;
+  align-items: center;
+  }
+
+
+  .bottom-bar .discount {
+    display: none;
+  }
+  
 }
 
 /* Additional styles to match the image content */

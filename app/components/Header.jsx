@@ -80,17 +80,26 @@ export function Header({ header, isLoggedIn, cart, publicStoreDomain }) {
     <>
       <AnnouncementBar />
       <header className="header">
-        <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-          <strong>{shop.name}</strong>
-        </NavLink>
-        <HeaderMenu
-          menu={menu}
-          viewport="desktop"
-          primaryDomainUrl={header.shop.primaryDomain.url}
-          publicStoreDomain={publicStoreDomain}
-        />
-        <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
-      </header>
+  <div className="header-logo">
+    <div className="header-logo-mobile">
+      <img    ></img></div>
+  <div className="brand-logo">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0933/1789/0388/files/logo-dark.svg?v=1739877824"
+      alt="Brand Logo"
+      height="40"
+    />
+  </div>
+  <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+</div>
+<div className="header-menu">
+    <HeaderMenu
+      menu={menu}
+      viewport="desktop"
+    />
+  </div>
+</header>
+
     </>
   );
 }
