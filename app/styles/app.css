@@ -162,15 +162,18 @@ button.reset:hover:not(:has(> *)) {
   background: #fff;
   display: flex;
   height: var(--header-height);
-  padding: 0 1rem;
+  padding: 0 1.8rem;
   position: sticky;
-  top: 0;
+  gap: 15px;
   z-index: 1;
   flex-direction: column;
 }
 
 .header-logo{
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-menu-mobile-toggle {
@@ -205,7 +208,7 @@ button.reset:hover:not(:has(> *)) {
   align-items: center;
   display: flex;
   grid-gap: 1rem;
-  margin-left: auto;
+  
 }
 
 /*

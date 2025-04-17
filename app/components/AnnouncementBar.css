@@ -16,6 +16,7 @@
   justify-content: center;
   position: relative;
   text-align: center;
+  font-size: 12px;
 }
 
 .countdown-timer {
@@ -71,7 +72,8 @@
 }
 
 .bottom-bar span {
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 
 .bottom-bar .guarantee {
