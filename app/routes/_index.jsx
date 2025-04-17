@@ -68,6 +68,7 @@ export default function Homepage() {
     <div className="home">
         <Slideshow />
         <CategoryGrid />
+      
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
     </div>
