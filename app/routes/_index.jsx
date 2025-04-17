@@ -1,7 +1,8 @@
 import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
-
+import Slideshow from '../components/Slideshow';
+import CategoryGrid from '../components/CategoryGrid';
 /**
  * @type {MetaFunction}
  */
@@ -60,9 +61,13 @@ function loadDeferredData({context}) {
 
 export default function Homepage() {
   /** @type {LoaderReturnData} */
-  const data = useLoaderData();
+  const data = useLoaderData(); 
+
   return (
+    
     <div className="home">
+        <Slideshow />
+        <CategoryGrid />
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
     </div>

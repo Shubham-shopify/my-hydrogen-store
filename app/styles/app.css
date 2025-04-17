@@ -167,6 +167,7 @@ button.reset:hover:not(:has(> *)) {
   gap: 15px;
   z-index: 1;
   flex-direction: column;
+  padding-bottom: 50px;
 }
 
 .header-logo{
@@ -193,7 +194,7 @@ button.reset:hover:not(:has(> *)) {
   grid-gap: 1rem;
   @media (min-width: 45em) {
     display: flex;
-    grid-gap: 3rem;
+    grid-gap: 7rem;
     margin-left: 3rem;
     font-size: 18px;
     font-weight: 500;

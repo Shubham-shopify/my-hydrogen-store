@@ -2,7 +2,7 @@ import {getShopAnalytics} from '@shopify/hydrogen';
 import {Outlet, useRouteError, isRouteErrorResponse} from '@remix-run/react';
 import favicon from '~/assets/favicon.svg';
 import {FOOTER_QUERY, HEADER_QUERY} from '~/lib/fragments';
-import {MENU_QUERY} from '~/lib/shopify-queries';
+
 
 
 /**
