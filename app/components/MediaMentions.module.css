@@ -1,0 +1,49 @@
+.wrapper {
+    background: #fcf4ec;
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+  
+  .heading {
+    margin-bottom: 2rem;
+  }
+  
+  .subtext {
+    font-size: 0.85rem;
+    color: #555;
+    letter-spacing: 1px;
+  }
+  
+  .title {
+    font-size: 2.7rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+  
+  hr {
+    width: 90%;
+    max-width: 95%;
+    margin: 1rem auto;
+    border: 1px solid #000;
+  }
+  
+  .logoGrid {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .logo {
+    max-height: 45px;
+    max-width: 170px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+  }
+  
+  .logo:hover {
+    filter: none;
+  }
+  

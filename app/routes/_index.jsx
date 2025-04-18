@@ -3,6 +3,8 @@ import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 import Slideshow from '../components/Slideshow';
 import CategoryGrid from '../components/CategoryGrid';
+import MediaMentions from '../components/MediaMentions';
+import JewelleryOccasion from '~/components/JewelleryOccasion';
 /**
  * @type {MetaFunction}
  */
@@ -68,7 +70,8 @@ export default function Homepage() {
     <div className="home">
         <Slideshow />
         <CategoryGrid />
-      
+        <MediaMentions />
+        <JewelleryOccasion />
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
     </div>
