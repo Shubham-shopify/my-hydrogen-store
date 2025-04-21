@@ -5,6 +5,9 @@ import { useAside } from '~/components/Aside';
 import { useEffect, useState } from 'react';
 import '~/components/AnnouncementBar.css';
 
+
+
+
 /**
  * Announcement Bar Component that displays a countdown timer and trust information
  */

@@ -3,13 +3,6 @@ import {isbot} from 'isbot';
 import {renderToReadableStream} from 'react-dom/server';
 import {createContentSecurityPolicy} from '@shopify/hydrogen';
 
-/**
- * @param {Request} request
- * @param {number} responseStatusCode
- * @param {Headers} responseHeaders
- * @param {EntryContext} remixContext
- * @param {AppLoadContext} context
- */
 export default async function handleRequest(
   request,
   responseStatusCode,
@@ -17,12 +10,26 @@ export default async function handleRequest(
   remixContext,
   context,
 ) {
-  const {nonce, header, NonceProvider} = createContentSecurityPolicy({
+  const nonceCSP = createContentSecurityPolicy({
     shop: {
       checkoutDomain: context.env.PUBLIC_CHECKOUT_DOMAIN,
       storeDomain: context.env.PUBLIC_STORE_DOMAIN,
     },
   });
+
+  const {nonce, header, NonceProvider} = nonceCSP;
+
+  // Now add directives using `header` + dynamic ones
+  const cspDirectives = `
+    default-src 'self';
+    script-src 'self' 'nonce-${nonce}' https://widget.trustpilot.com https://integrations.etrusted.com https://cdn.shopify.com  'unsafe-inline';
+    frame-src 'self' https://widget.trustpilot.com https://widgets.trustedshops.com;
+    connect-src 'self' https://widget.trustpilot.com https://integrations.etrusted.com https://monorail-edge.shopifysvc.com https://www.abelini.com;;
+    img-src * data:;
+    style-src 'self' 'unsafe-inline' https://integrations.etrusted.com;
+`.replace(/\n/g, '').trim();
+  
+  responseHeaders.set('Content-Security-Policy', cspDirectives);
 
   const body = await renderToReadableStream(
     <NonceProvider>
@@ -43,13 +50,9 @@ export default async function handleRequest(
   }
 
   responseHeaders.set('Content-Type', 'text/html');
-  responseHeaders.set('Content-Security-Policy', header);
 
   return new Response(body, {
     headers: responseHeaders,
     status: responseStatusCode,
   });
 }
-
-/** @typedef {import('@shopify/remix-oxygen').EntryContext} EntryContext */
-/** @typedef {import('@shopify/remix-oxygen').AppLoadContext} AppLoadContext */

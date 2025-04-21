@@ -5,6 +5,14 @@ import Slideshow from '../components/Slideshow';
 import CategoryGrid from '../components/CategoryGrid';
 import MediaMentions from '../components/MediaMentions';
 import JewelleryOccasion from '~/components/JewelleryOccasion';
+import CustomerReviewSection from '~/components/CustomerReviewSection';
+import VisitShowroom from '~/components/VisitShowroom';
+import InstagramFeed from '~/components/InstagramFeed';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
+
 /**
  * @type {MetaFunction}
  */
@@ -66,14 +74,16 @@ export default function Homepage() {
   const data = useLoaderData(); 
 
   return (
-    
     <div className="home">
         <Slideshow />
         <CategoryGrid />
+        <CustomerReviewSection />
         <MediaMentions />
         <JewelleryOccasion />
-      <FeaturedCollection collection={data.featuredCollection} />
-      <RecommendedProducts products={data.recommendedProducts} />
+        <VisitShowroom />
+        <InstagramFeed />
+        {/*  <FeaturedCollection collection={data.featuredCollection} /> */}
+        {/* <RecommendedProducts products={data.recommendedProducts} /> */}
     </div>
   );
 }
