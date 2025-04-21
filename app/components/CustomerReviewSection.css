@@ -1,0 +1,123 @@
+.review-slider {
+    background: #fff;
+    padding: 20px 0;
+    position: relative;
+  }
+  
+  .s-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+  }
+  
+  .s-item-new {
+   max-width: 320px;
+   max-height: 300px;
+   width: 320px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    flex-shrink: 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  
+  /* Truncate long review text with ... */
+.text-white-space {
+    color: #444;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Show max 4 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .s-item-new p {
+    margin-bottom: 10px;
+  }
+  
+  .mediumstars {
+    display: inline-block;
+  }
+  
+  .mediumstars .iconify {
+    color: #f5b921;
+    margin: 0 1px;
+  }
+  
+  .s-item-new .title {
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #333;
+  }
+  
+  .s-item-new .text-white-space {
+    color: #444;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .arraows {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 5;
+    pointer-events: none;
+  }
+  
+  .prevIcon,
+  .nextIcon {
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+  }
+  
+  .prevIcon {
+    margin-left: -10px;
+  }
+  
+  .nextIcon {
+    margin-right: -10px;
+  }
+  
+  /* Scrollbar styling */
+  .s-carousel::-webkit-scrollbar {
+    height: 8px;
+  }
+  .s-carousel::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+  .s-carousel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+
+  .nav-tabs .nav-link {
+   border: none !important;
+    box-shadow: none !important;
+}
+.nav-tabs{
+    max-height: 100px;
+}
+
+.nav-link{
+    color: black!important;;
+}

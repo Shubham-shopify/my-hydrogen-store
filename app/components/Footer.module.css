@@ -1,0 +1,233 @@
+.footer {
+    width: 100%;
+    background: #f7f7f7;
+    border-top: 1px solid #e5e7eb;
+    padding: 20px;
+  }
+  
+  .footerMain {
+    max-width: 100vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+  
+  @media (min-width: 900px) {
+    .footerMain {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 0;
+      padding: 0;
+    }
+  }
+  
+  .left {
+    flex: 1 1 30%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 32px 0 32px 32px;
+  }
+  
+  .title {
+    font-size: 2.9rem;
+    color: #111;
+    letter-spacing: -0.04em;
+    margin-bottom: 0;
+    line-height: 1.15;
+  }
+  
+  @media (max-width: 899px) {
+    .left {
+      justify-content: center;
+      padding: 20px 0 8px 0;
+    }
+    .title {
+      font-size: 2.1rem;
+      text-align: center;
+    }
+  }
+  
+  .right {
+    flex: 1 1 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 32px 32px 24px 8px;
+    min-width: 0;
+  }
+  
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 0.7rem;
+    align-items: stretch;
+  }
+  
+  @media (min-width: 900px) {
+    .form {
+      flex-direction: row;
+      gap: 1.4rem;
+      margin-bottom: 0.8rem;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+  }
+  
+  .input {
+    flex: 1 1 0;
+    min-width: 400px;
+    max-width: unset;
+    height: 40px;
+    padding: 0 24px;
+    border: 2.5px solid #121212;
+    border-radius: 9999px;
+    font-size: 1.22rem;
+    outline: none;
+    background: #fff;
+    font-weight: 500;
+    color: #0f0f0f;
+    box-sizing: border-box;
+    transition: border 0.2s, box-shadow 0.2s;
+    text-align: left;
+    margin: 0;
+  }
+  
+  .input:focus {
+    border-color: #111;
+    background: #fff;
+  }
+  
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 400px;
+    height: 40px;
+    background: #000;
+    color: #fff;
+    border: 2.5px solid #121212;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    transition: background 0.24s;
+    cursor: pointer;
+    box-shadow: none;
+    letter-spacing: 0.02em;
+    font-family: inherit;
+    margin: 0;
+    padding: 0 32px;
+    outline: none;
+    text-align: center;
+  }
+  
+  .button:hover {
+    background: #232323;
+  }
+  
+  @media (max-width: 899px) {
+    .form {
+      gap: 0.8rem;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .button,
+    .input {
+      min-width: unset;
+      width: 100%;
+      max-width: unset;
+      border-radius: 9999px;
+    }
+  }
+  
+  .privacyText {
+    font-size: 0.93rem;
+    color: #383838;
+    margin-top: 6px;
+    line-height: 1.45;
+    max-width: 100%;
+  }
+  .link {
+    text-decoration: underline;
+    color: #000;
+    font-weight: 600;
+  }
+  .link:hover {
+    color: #6E59A5;
+  }
+  
+  
+  
+  
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .columns h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-weight:14px;
+  }
+  
+  .columns ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .columns li {
+    margin-bottom: 6px;
+  }
+  
+  .columns a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .bottomLinks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+  
+  .copyRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .socials {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    justify-content: center;
+  }
+  
+  .socials img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .form{
+    display: flex;
+  }
+
+.stayintouch{
+    display: flex!important;
+}
+
+.footercontetnt{
+    display: flex!important;
+}
