@@ -13,25 +13,20 @@ const CustomerReviewSection = () => {
   const [trustStats, setTrustStats] = useState({ total: 0, rating: 0 });
   const [error, setError] = useState(null);
 
+  // Effect for carousel and API fetch
   useEffect(() => {
-    // Ensure we're in the browser
     if (typeof window === 'undefined') return;
 
     const carousel = carouselRef.current;
     const prev = prevRef.current;
     const next = nextRef.current;
 
-    // Carousel navigation handlers
     const handlePrevClick = () => {
-      if (carousel) {
-        carousel.scrollBy({ left: -300, behavior: 'smooth' });
-      }
+      if (carousel) carousel.scrollBy({ left: -300, behavior: 'smooth' });
     };
 
     const handleNextClick = () => {
-      if (carousel) {
-        carousel.scrollBy({ left: 300, behavior: 'smooth' });
-      }
+      if (carousel) carousel.scrollBy({ left: 300, behavior: 'smooth' });
     };
 
     if (prev && next) {
@@ -39,7 +34,7 @@ const CustomerReviewSection = () => {
       next.addEventListener('click', handleNextClick);
     }
 
-    // Fetch Google Review Data
+    // Fetch review data
     fetch('https://www.abelini.com/shopify/api/google_review.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -50,13 +45,13 @@ const CustomerReviewSection = () => {
         const data = JSON.parse(raw);
 
         setGoogleStats({
-          total: data.google_total_review.total_review,
-          rating: data.google_total_review.percentage,
+          total: data.google_total_review.total_review || 0,
+          rating: data.google_total_review.percentage || 0,
         });
 
         setTrustStats({
-          total: data.trust_shops_total_review.total_review,
-          rating: data.trust_shops_total_review.percentage,
+          total: data.trust_shops_total_review.total_review || 0,
+          rating: data.trust_shops_total_review.percentage || 0,
         });
 
         setReviews(data.google_reviews || []);
@@ -66,39 +61,47 @@ const CustomerReviewSection = () => {
         setError('Unable to load reviews. Please try again later.');
       });
 
-    // Dynamically import Bootstrap
-    import('bootstrap/dist/js/bootstrap.bundle.min.js').catch((err) => {
-      console.error('Failed to load Bootstrap:', err);
-    });
-
-    // Trustpilot widget script
-    if (!document.querySelector('script[src*="tp.widget.bootstrap.min.js"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js';
-      script.async = true;
-      script.onload = () => {
-        if (window.Trustpilot) {
-          window.Trustpilot.loadFromElement(document.querySelector('.trustpilot-widget'));
-        }
-      };
-      document.body.appendChild(script);
-    }
-
-    // TrustedShop widget script
-    if (!document.querySelector('script[src*="widget.js"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://integrations.etrusted.com/applications/widget.js/v2';
-      script.defer = true;
-      document.body.appendChild(script);
-    }
-
-    // Cleanup
     return () => {
       if (prev && next) {
         prev.removeEventListener('click', handlePrevClick);
         next.removeEventListener('click', handleNextClick);
       }
     };
+  }, []);
+
+  // Separate effect for loading external scripts
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    // Load Bootstrap
+    import('bootstrap/dist/js/bootstrap.bundle.min.js').catch((err) => {
+      console.error('Failed to load Bootstrap:', err);
+    });
+
+    // Load Trustpilot script
+    if (!document.querySelector('script[src*="tp.widget.bootstrap.min.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js';
+      script.async = true;
+      script.onload = () => {
+        if (window.Trustpilot) {
+          document.querySelectorAll('.trustpilot-widget').forEach((element) => {
+            window.Trustpilot.loadFromElement(element);
+          });
+        }
+      };
+      script.onerror = () => console.error('Failed to load Trustpilot script');
+      document.body.appendChild(script);
+    }
+
+    // Load TrustedShop script
+    if (!document.querySelector('script[src*="widget.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://integrations.etrusted.com/applications/widget.js/v2';
+      script.defer = true;
+      script.onerror = () => console.error('Failed to load TrustedShop script');
+      document.body.appendChild(script);
+    }
   }, []);
 
   return (
@@ -206,12 +209,10 @@ const CustomerReviewSection = () => {
 
           <div className="tab-content w-100">
             <div className="tab-pane w-100" id="tabs-1" role="tabpanel">
-              {/* Google Review Slider */}
               <div className="row m-0 review-owl">
                 <div className="col-12 p-0">
                   <div className="review-slider px-2 px-lg-0">
                     <div id="google-review" className="s-carousel scrollbar d-flex overflow-x-auto" ref={carouselRef}>
-                      {/* Arrow Controls */}
                       <div className="arraows">
                         <span className="prevIcon prev-icon-review" ref={prevRef} data-prev="3">
                           <span className="iconify" style={{ fontSize: 22 }}>
@@ -243,7 +244,6 @@ const CustomerReviewSection = () => {
                         </span>
                       </div>
 
-                      {/* Dynamic Google Reviews from API */}
                       {reviews.length > 0 ? (
                         reviews.map((r, index) => (
                           <div key={r.review_id || index} className="s-item-new">
@@ -251,7 +251,7 @@ const CustomerReviewSection = () => {
                               <p className="m-0 text-black">Google Review</p>
                               <div className="mt-3">
                                 <p className="mediumstars d-inline">
-                                  {[...Array(Number(r.rating))].map((_, i) => (
+                                  {[...Array(Number(r.rating || 0))].map((_, i) => (
                                     <span
                                       key={i}
                                       className="iconify txtclr-yellow"
@@ -263,8 +263,8 @@ const CustomerReviewSection = () => {
                                   ))}
                                 </p>
                               </div>
-                              <p className="text-black font-weight-bold my-3 title text-capitalize">{r.author}</p>
-                              <p className="text-white-space title text-capitalize">{r.text}</p>
+                              <p className="text-black font-weight-bold my-3 title text-capitalize">{r.author || 'Anonymous'}</p>
+                              <p className="text-white-space title text-capitalize">{r.text || 'No review text'}</p>
                               <p>A reviewer</p>
                             </div>
                           </div>
@@ -281,7 +281,6 @@ const CustomerReviewSection = () => {
             <div className="tab-pane active w-100" id="tabs-2" role="tabpanel">
               <div className="row m-0 review-owl">
                 <div className="col-12 p-0 my-3">
-                  {/* TrustBox Widget - Carousel */}
                   <div
                     className="trustpilot-widget"
                     data-locale="en-GB"
@@ -309,7 +308,6 @@ const CustomerReviewSection = () => {
             <div className="tab-pane w-100" id="tabs-3" role="tabpanel">
               <div className="row m-0 review-owl s-carousel scrollbar">
                 <div className="col-12 p-0">
-                  {/* Trusted Shops Widget */}
                   <etrusted-widget data-etrusted-widget-id="wdg-673e15ea-7c32-4a80-8a04-a688541a7c6b"></etrusted-widget>
                 </div>
               </div>
