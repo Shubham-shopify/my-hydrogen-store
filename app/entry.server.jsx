@@ -24,9 +24,9 @@ export default async function handleRequest(
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' https://widget.trustpilot.com https://integrations.etrusted.com https://cdn.shopify.com  'unsafe-inline';
     frame-src 'self' https://widget.trustpilot.com https://widgets.trustedshops.com;
-    connect-src 'self' https://widget.trustpilot.com https://integrations.etrusted.com https://monorail-edge.shopifysvc.com https://www.abelini.com;;
+    connect-src 'self' https://widget.trustpilot.com https://integrations.etrusted.com https://monorail-edge.shopifysvc.com https://www.abelini.com;
     img-src * data:;
-    style-src 'self' 'unsafe-inline' https://integrations.etrusted.com;
+    style-src 'self' 'unsafe-inline' https://integrations.etrusted.com https://cdn.shopify.com https://your-cdn-url.com;
 `.replace(/\n/g, '').trim();
   
   responseHeaders.set('Content-Security-Policy', cspDirectives);
