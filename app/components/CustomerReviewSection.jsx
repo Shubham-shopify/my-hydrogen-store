@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './CustomerReviewSection.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReviewWidgets from './ReviewWidgets';
-import('bootstrap/dist/js/bootstrap.bundle.min.js')
+import ('bootstrap/dist/js/bootstrap.bundle.min.js');
 
 
 const CustomerReviewSection = () => {
