@@ -1,37 +1,36 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react'; // Import Swiper React components
-import 'swiper/css'; // Import Swiper styles
-import 'swiper/css/pagination'; // Optional: Import pagination styles if needed
-import styles from './InstagramFeed.module.css'; // Import CSS module
+import React, { useState, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import styles from './InstagramFeed.module.css';
 
+// This component fetches Instagram feed data from our server endpoint (/instagram-proxy),
+// and displays it in a responsive Swiper carousel.
 const InstagramFeed = () => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [slides, setSlides] = useState([]);
-  const endpoint = '/instagram-proxy';
+  const [loading, setLoading] = useState(true);         // Loading state
+  const [error, setError] = useState(null);             // Error message (if any)
+  const [slides, setSlides] = useState([]);             // Slides to render
+  const endpoint = '/instagram-proxy';                  // Server route (this uses server-side cache fallback)
 
   useEffect(() => {
     const loadInstagramFeed = async () => {
       try {
-        console.log("Fetching Instagram feed from:", endpoint);
+        console.log(" Fetching Instagram feed from:", endpoint);
 
         const res = await fetch(endpoint);
         const data = await res.json();
 
-        if (data.error) {
-          console.error("Error:", data.error);
-          console.error("Message:", data.message);
-          if (data.previous_response) {
-            console.log("Displaying previous response:", data.previous_response);
-            data = data.previous_response;
-          }
+        if (!res.ok || data.error) {
+          throw new Error(data.message || "Instagram API error");
         }
 
-        const posts = data?.data || [];
+        // Filter out unwanted posts (e.g., manually excluded ones)
         const EXCLUDED_IDS = ["18166609282334512", "POST_ID_2"];
+        const posts = data?.data || [];
 
-        const filteredPosts = posts.filter(post => !EXCLUDED_IDS.includes(post.id));
-        const visiblePosts = filteredPosts.slice(0, 20);
+        const visiblePosts = posts
+          .filter(post => !EXCLUDED_IDS.includes(post.id))
+          .slice(0, 20); // Limit to first 20 posts
 
         const newSlides = visiblePosts.map((post, i) => {
           const imageUrl =
@@ -39,8 +38,10 @@ const InstagramFeed = () => {
             post.images?.standard_resolution?.url ||
             post.videos?.standard_resolution?.url ||
             post.thumbnail_url;
+
           const postLink = post.permalink || post.link;
 
+          // Only create slide if image exists
           if (!imageUrl) return null;
 
           return (
@@ -52,31 +53,47 @@ const InstagramFeed = () => {
               </div>
             </SwiperSlide>
           );
-        }).filter(Boolean);
+        }).filter(Boolean); // Remove nulls
 
         setSlides(newSlides);
 
       } catch (err) {
-        console.error("Error loading feed:", err);
-        setError("Error loading feed.");
+        console.error(" Error loading feed:", err.message);
+        setError("Could not load Instagram feed.");
       } finally {
         setLoading(false);
       }
     };
 
     loadInstagramFeed();
-  }, [endpoint]);
+  }, []);
 
   return (
     <section className="p-lg-4 py-4 home-instagram">
       <div className={styles['insta-feed-wrapper']}>
+
+        {/* Instagram Profile Link */}
         <div className={styles['insta-link']}>
           <a href="https://www.instagram.com/abelinijewellery" target="_blank">
             @abelinijewellery
           </a>
         </div>
-        {loading && <div className={styles['loading-message']}>Loading...</div>}
-        {error && <div className={styles['error-message']} style={{ display: 'block' }}>{error}</div>}
+
+        {/* Show loading message */}
+        {loading && (
+          <div className={styles['loading-message']}>
+            Loading...
+          </div>
+        )}
+
+        {/* Show error message if something went wrong */}
+        {error && (
+          <div className={styles['error-message']} style={{ display: 'block' }}>
+            {error}
+          </div>
+        )}
+
+        {/* Swiper only renders if there's no error and not loading */}
         <Swiper
           spaceBetween={10}
           slidesPerView={2}
