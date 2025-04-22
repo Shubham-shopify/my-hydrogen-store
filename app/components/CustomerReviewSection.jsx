@@ -1,8 +1,7 @@
-'use client';
-
 import React, { useEffect, useRef, useState } from 'react';
 import './CustomerReviewSection.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ReviewWidgets from './ReviewWidgets';
 
 const CustomerReviewSection = () => {
   const carouselRef = useRef(null);
@@ -13,7 +12,6 @@ const CustomerReviewSection = () => {
   const [trustStats, setTrustStats] = useState({ total: 0, rating: 0 });
   const [error, setError] = useState(null);
 
-  // Effect for carousel and API fetch
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -67,41 +65,6 @@ const CustomerReviewSection = () => {
         next.removeEventListener('click', handleNextClick);
       }
     };
-  }, []);
-
-  // Separate effect for loading external scripts
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    // Load Bootstrap
-    import('bootstrap/dist/js/bootstrap.bundle.min.js').catch((err) => {
-      console.error('Failed to load Bootstrap:', err);
-    });
-
-    // Load Trustpilot script
-    if (!document.querySelector('script[src*="tp.widget.bootstrap.min.js"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js';
-      script.async = true;
-      script.onload = () => {
-        if (window.Trustpilot) {
-          document.querySelectorAll('.trustpilot-widget').forEach((element) => {
-            window.Trustpilot.loadFromElement(element);
-          });
-        }
-      };
-      script.onerror = () => console.error('Failed to load Trustpilot script');
-      document.body.appendChild(script);
-    }
-
-    // Load TrustedShop script
-    if (!document.querySelector('script[src*="widget.js"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://integrations.etrusted.com/applications/widget.js/v2';
-      script.defer = true;
-      script.onerror = () => console.error('Failed to load TrustedShop script');
-      document.body.appendChild(script);
-    }
   }, []);
 
   return (
@@ -279,38 +242,11 @@ const CustomerReviewSection = () => {
             </div>
 
             <div className="tab-pane active w-100" id="tabs-2" role="tabpanel">
-              <div className="row m-0 review-owl">
-                <div className="col-12 p-0 my-3">
-                  <div
-                    className="trustpilot-widget"
-                    data-locale="en-GB"
-                    data-template-id="53aa8912dec7e10d38f59f36"
-                    data-businessunit-id="5982fc490000ff0005a809d7"
-                    data-style-height="140px"
-                    data-style-width="100%"
-                    data-theme="light"
-                    data-stars="1,2,3,4,5"
-                    data-review-languages="en"
-                  >
-                    <a
-                      href="https://uk.trustpilot.com/review/abelini.com"
-                      className="ask-confirm-before-visit"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Trustpilot
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <ReviewWidgets type="trustpilot" />
             </div>
 
             <div className="tab-pane w-100" id="tabs-3" role="tabpanel">
-              <div className="row m-0 review-owl s-carousel scrollbar">
-                <div className="col-12 p-0">
-                  <etrusted-widget data-etrusted-widget-id="wdg-673e15ea-7c32-4a80-8a04-a688541a7c6b"></etrusted-widget>
-                </div>
-              </div>
+              <ReviewWidgets type="trustedshop" />
             </div>
           </div>
         </div>
