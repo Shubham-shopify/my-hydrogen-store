@@ -57,31 +57,29 @@ const CustomerReviewSection = () => {
     import('bootstrap/dist/js/bootstrap.bundle.min.js')
   
 
-    useEffect(() => {
-      if (typeof window !== 'undefined') {
-        // Trustpilot widget
-        const tp = document.createElement('script');
-        tp.src = 'https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js';
-        tp.async = true;
-        document.body.appendChild(tp);
-    
-        // TrustedShops widget
-        const ts = document.createElement('script');
-        ts.src = 'https://integrations.etrusted.com/applications/widget.js/v2';
-        ts.defer = true;
-        document.body.appendChild(ts);
-    
-        // Optional: Add cleanup if you're attaching event listeners
-        const prev = document.querySelector('#prev');
-        const next = document.querySelector('#next');
-    
-        return () => {
-          if (prev) prev.removeEventListener('click', handlePrevClick);
-          if (next) next.removeEventListener('click', handleNextClick);
-        };
-      }
-    }, []);
-    
+    if (typeof window !== 'undefined') {
+      // Trustpilot widget
+      const tp = document.createElement('script');
+      tp.src = 'https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js';
+      tp.async = true;
+      document.body.appendChild(tp);
+  
+      // TrustedShops widget
+      const ts = document.createElement('script');
+      ts.src = 'https://integrations.etrusted.com/applications/widget.js/v2';
+      ts.defer = true;
+      document.body.appendChild(ts);
+  
+      // Optional: Add cleanup if you're attaching event listeners
+      const prev = document.querySelector('#prev');
+      const next = document.querySelector('#next');
+  
+      return () => {
+        if (prev) prev.removeEventListener('click', handlePrevClick);
+        if (next) next.removeEventListener('click', handleNextClick);
+      };
+    }
+  }, []);
     return (
       <div className="container">
         <div className="row my-3 mx-0">
