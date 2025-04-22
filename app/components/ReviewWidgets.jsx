@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './CustomerReviewSection.css';
+import LoadBootstrapScript from '~/components/LoadBootstrapScript';
 
 const ReviewWidgets = ({ type }) => {
   const [scriptLoaded, setScriptLoaded] = useState(false);

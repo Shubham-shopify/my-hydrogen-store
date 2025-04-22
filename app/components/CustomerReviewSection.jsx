@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './CustomerReviewSection.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReviewWidgets from './ReviewWidgets';
+import LoadBootstrapScript from '~/components/LoadBootstrapScript';
 
 
 
@@ -14,71 +15,66 @@ const CustomerReviewSection = () => {
   const [trustStats, setTrustStats] = useState({ total: 0, rating: 0 });
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
+    useEffect(() => {
+      if (typeof window === 'undefined') return;
 
-    const carousel = carouselRef.current;
-    const prev = prevRef.current;
-    const next = nextRef.current;
+      const carousel = carouselRef.current;
+      const prev = prevRef.current;
+      const next = nextRef.current;
 
-    const handlePrevClick = () => {
-      if (carousel) carousel.scrollBy({ left: -300, behavior: 'smooth' });
-    };
+      const handlePrevClick = () => {
+        if (carousel) carousel.scrollBy({ left: -300, behavior: 'smooth' });
+      };
 
-    const handleNextClick = () => {
-      if (carousel) carousel.scrollBy({ left: 300, behavior: 'smooth' });
-    };
+      const handleNextClick = () => {
+        if (carousel) carousel.scrollBy({ left: 300, behavior: 'smooth' });
+      };
 
-    if (prev && next) {
-      prev.addEventListener('click', handlePrevClick);
-      next.addEventListener('click', handleNextClick);
-    }
-
-    // Fetch review data
-    fetch('https://www.abelini.com/shopify/api/google_review.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then(async (res) => {
-        if (!res.ok) throw new Error('Failed to fetch reviews');
-        const raw = await res.text();
-        const data = JSON.parse(raw);
-
-        setGoogleStats({
-          total: data.google_total_review.total_review || 0,
-          rating: data.google_total_review.percentage || 0,
-        });
-
-        setTrustStats({
-          total: data.trust_shops_total_review.total_review || 0,
-          rating: data.trust_shops_total_review.percentage || 0,
-        });
-
-        setReviews(data.google_reviews || []);
-      })
-      .catch((err) => {
-        console.error('Failed to fetch reviews:', err);
-        setError('Unable to load reviews. Please try again later.');
-      });
-
-       // Dynamically import bootstrap.bundle.min.js ONLY on client
-       if (typeof window !== 'undefined') {
-        import('bootstrap/dist/js/bootstrap.bundle.min.js')
-          .then(() => {
-            console.log('Bootstrap loaded');
-          })
-          .catch((err) => {
-            console.error('Failed to load Bootstrap:', err);
-          });
-        }
-
-    return () => {
       if (prev && next) {
-        prev.removeEventListener('click', handlePrevClick);
-        next.removeEventListener('click', handleNextClick);
+        prev.addEventListener('click', handlePrevClick);
+        next.addEventListener('click', handleNextClick);
       }
-    };
-  }, []);
+
+      // Fetch review data
+      fetch('https://www.abelini.com/shopify/api/google_review.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      })
+        .then(async (res) => {
+          if (!res.ok) throw new Error('Failed to fetch reviews');
+          const raw = await res.text();
+          const data = JSON.parse(raw);
+
+          setGoogleStats({
+            total: data.google_total_review.total_review || 0,
+            rating: data.google_total_review.percentage || 0,
+          });
+
+          setTrustStats({
+            total: data.trust_shops_total_review.total_review || 0,
+            rating: data.trust_shops_total_review.percentage || 0,
+          });
+
+          setReviews(data.google_reviews || []);
+        })
+        .catch((err) => {
+          console.error('Failed to fetch reviews:', err);
+          setError('Unable to load reviews. Please try again later.');
+        });
+
+        // Dynamically import bootstrap.bundle.min.js ONLY on client
+        const script = document.createElement('script');
+                      script.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js';
+                         script.async = true;
+                         document.body.appendChild(script);
+
+      return () => {
+        if (prev && next) {
+          prev.removeEventListener('click', handlePrevClick);
+          next.removeEventListener('click', handleNextClick);
+        }
+      };
+    }, []);
 
   return (
     <div className="container">

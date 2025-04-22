@@ -22,7 +22,7 @@ export default async function handleRequest(
   // Now add directives using `header` + dynamic ones
   const cspDirectives = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' https://widget.trustpilot.com https://integrations.etrusted.com https://cdn.shopify.com  'unsafe-inline';
+    script-src 'self' 'nonce-${nonce}' https://widget.trustpilot.com https://integrations.etrusted.com https://cdn.shopify.com https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js  'unsafe-inline';
     frame-src 'self' https://widget.trustpilot.com https://widgets.trustedshops.com;
     connect-src 'self' https://widget.trustpilot.com https://integrations.etrusted.com https://monorail-edge.shopifysvc.com https://www.abelini.com;
     img-src * data:;
