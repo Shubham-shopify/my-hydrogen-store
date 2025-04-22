@@ -5,7 +5,7 @@ import Slideshow from '../components/Slideshow';
 import CategoryGrid from '../components/CategoryGrid';
 import MediaMentions from '../components/MediaMentions';
 import JewelleryOccasion from '~/components/JewelleryOccasion';
-//import CustomerReviewSection from '~/components/CustomerReviewSection';
+import CustomerReviewSection from '~/components/CustomerReviewSection';
 import VisitShowroom from '~/components/VisitShowroom';
 import InstagramFeed from '~/components/InstagramFeed';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -77,7 +77,7 @@ export default function Homepage() {
     <div className="home">
         <Slideshow />
         <CategoryGrid />
-        {/*<CustomerReviewSection />*/}
+        <CustomerReviewSection />
         <MediaMentions />
         <JewelleryOccasion />
         <VisitShowroom />
