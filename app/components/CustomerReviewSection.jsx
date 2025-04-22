@@ -62,8 +62,15 @@ const CustomerReviewSection = () => {
       });
 
        // Dynamically import bootstrap.bundle.min.js ONLY on client
-      
-        
+       if (typeof window !== 'undefined') {
+        import('bootstrap/dist/js/bootstrap.bundle.min.js')
+          .then(() => {
+            console.log('Bootstrap loaded');
+          })
+          .catch((err) => {
+            console.error('Failed to load Bootstrap:', err);
+          });
+        }
 
     return () => {
       if (prev && next) {
