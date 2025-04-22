@@ -1,6 +1,12 @@
 import './CustomerReviewSection.css';
 import React, { useEffect, useRef, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
+
+
+
+
 
 const CustomerReviewSection = () => {
   const carouselRef = useRef(null);
@@ -24,15 +30,11 @@ const CustomerReviewSection = () => {
       carousel.scrollBy({ left: 300, behavior: 'smooth' });
     };
 
-    prev?.addEventListener('click', handlePrevClick);
-    next?.addEventListener('click', handleNextClick);
+    prev.addEventListener('click', handlePrevClick);
+    next.addEventListener('click', handleNextClick);
 
-    const loadBootstrap = async () => {
-      await import('bootstrap/dist/js/bootstrap.bundle.min.js');
-    };
-    loadBootstrap();
-
-   fetch('https://www.abelini.com/shopify/api/google_review.php', {
+    // Fetch Google Review Data
+    fetch('https://www.abelini.com/shopify/api/google_review.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -55,26 +57,29 @@ const CustomerReviewSection = () => {
       .catch((err) => {
         console.error('Failed to fetch reviews:', err);
       });
+    // Dynamically import bootstrap.bundle.min.js ONLY on client
+    import('bootstrap/dist/js/bootstrap.bundle.min.js')
+   ;
 
-    if (typeof document !== 'undefined') {
-      if (!document.querySelector('script[src*="tp.widget.bootstrap.min.js"]')) {
-        const script = document.createElement('script');
-        script.src = 'https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js';
-        script.async = true;
-        document.body.appendChild(script);
-      }
+    // Trustpilot widget
+    if (!document.querySelector('script[src*="tp.widget.bootstrap.min.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
 
-      if (!document.querySelector('script[src*="widget.js"]')) {
-        const script = document.createElement('script');
-        script.src = 'https://integrations.etrusted.com/applications/widget.js/v2';
-        script.defer = true;
-        document.body.appendChild(script);
-      }
+    // TrustedShop widget
+    if (!document.querySelector('script[src*="widget.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://integrations.etrusted.com/applications/widget.js/v2';
+      script.defer = true;
+      document.body.appendChild(script);
     }
 
     return () => {
-      prev?.removeEventListener('click', handlePrevClick);
-      next?.removeEventListener('click', handleNextClick);
+      prev.removeEventListener('click', handlePrevClick);
+      next.removeEventListener('click', handleNextClick);
     };
   }, []);
   
@@ -279,7 +284,6 @@ const CustomerReviewSection = () => {
                   </div>
                 </div>
               </div>
-              
   
               <div className="tab-pane w-100" id="tabs-3" role="tabpanel">
                 <div className="row m-0 review-owl s-carousel scrollbar">
