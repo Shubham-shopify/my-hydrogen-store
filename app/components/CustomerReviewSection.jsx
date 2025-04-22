@@ -1,6 +1,6 @@
 import './CustomerReviewSection.css';
 import React, { useEffect, useRef, useState } from 'react';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -18,20 +18,30 @@ const CustomerReviewSection = () => {
   const [trustStats, setTrustStats] = useState({ total: 0, rating: 0 });
 
   useEffect(() => {
+    // Ensure we're in the browser
+    if (typeof window === 'undefined') return;
+
     const carousel = carouselRef.current;
     const prev = prevRef.current;
     const next = nextRef.current;
 
+    // Carousel navigation handlers
     const handlePrevClick = () => {
-      carousel.scrollBy({ left: -300, behavior: 'smooth' });
+      if (carousel) {
+        carousel.scrollBy({ left: -300, behavior: 'smooth' });
+      }
     };
 
     const handleNextClick = () => {
-      carousel.scrollBy({ left: 300, behavior: 'smooth' });
+      if (carousel) {
+        carousel.scrollBy({ left: 300, behavior: 'smooth' });
+      }
     };
 
-    prev.addEventListener('click', handlePrevClick);
-    next.addEventListener('click', handleNextClick);
+    if (prev && next) {
+      prev.addEventListener('click', handlePrevClick);
+      next.addEventListener('click', handleNextClick);
+    }
 
     // Fetch Google Review Data
     fetch('https://www.abelini.com/shopify/api/google_review.php', {
@@ -57,9 +67,11 @@ const CustomerReviewSection = () => {
       .catch((err) => {
         console.error('Failed to fetch reviews:', err);
       });
-    // Dynamically import bootstrap.bundle.min.js ONLY on client
-    import('bootstrap/dist/js/bootstrap.bundle.min.js')
-   ;
+
+    // Dynamically import Bootstrap
+    import('bootstrap/dist/js/bootstrap.bundle.min.js').catch((err) => {
+      console.error('Failed to load Bootstrap:', err);
+    });
 
     // Trustpilot widget
     if (!document.querySelector('script[src*="tp.widget.bootstrap.min.js"]')) {
@@ -77,9 +89,12 @@ const CustomerReviewSection = () => {
       document.body.appendChild(script);
     }
 
+    // Cleanup
     return () => {
-      prev.removeEventListener('click', handlePrevClick);
-      next.removeEventListener('click', handleNextClick);
+      if (prev && next) {
+        prev.removeEventListener('click', handlePrevClick);
+        next.removeEventListener('click', handleNextClick);
+      }
     };
   }, []);
   
