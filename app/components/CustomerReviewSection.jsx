@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './CustomerReviewSection.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReviewWidgets from './ReviewWidgets';
-import ('bootstrap/dist/js/bootstrap.bundle.min.js');
+
 
 
 const CustomerReviewSection = () => {
@@ -60,6 +60,12 @@ const CustomerReviewSection = () => {
         console.error('Failed to fetch reviews:', err);
         setError('Unable to load reviews. Please try again later.');
       });
+
+       // Dynamically import bootstrap.bundle.min.js ONLY on client
+       if (typeof window !== 'undefined') {
+        import('bootstrap/dist/js/bootstrap.bundle.min.js');
+      }
+        
 
     return () => {
       if (prev && next) {
