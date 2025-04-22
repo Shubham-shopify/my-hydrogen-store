@@ -4,7 +4,7 @@ import {Image, Money} from '@shopify/hydrogen';
 import Slideshow from '../components/Slideshow';
 import CategoryGrid from '../components/CategoryGrid';
 import MediaMentions from '../components/MediaMentions';
-//import JewelleryOccasion from '~/components/JewelleryOccasion';
+import JewelleryOccasion from '~/components/JewelleryOccasion';
 //import CustomerReviewSection from '~/components/CustomerReviewSection';
 import VisitShowroom from '~/components/VisitShowroom';
 import InstagramFeed from '~/components/InstagramFeed';
@@ -77,7 +77,7 @@ export default function Homepage() {
     <div className="home">
         <Slideshow />
         <CategoryGrid />
-        <CustomerReviewSection />
+        {/*<CustomerReviewSection />*/}
         <MediaMentions />
         <JewelleryOccasion />
         <VisitShowroom />
