@@ -8,7 +8,7 @@ import JewelleryOccasion from '~/components/JewelleryOccasion';
 import CustomerReviewSection from '~/components/CustomerReviewSection';
 import VisitShowroom from '~/components/VisitShowroom';
 import InstagramFeed from '~/components/InstagramFeed';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 
