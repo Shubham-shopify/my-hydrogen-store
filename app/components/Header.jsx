@@ -4,6 +4,7 @@ import { useAnalytics, useOptimisticCart } from '@shopify/hydrogen';
 import { useAside } from '~/components/Aside';
 import { useEffect, useState } from 'react';
 import '~/components/AnnouncementBar.css';
+import CustomNav from './CustomeNav';
 
 
 
@@ -149,7 +150,7 @@ export function Header({ header, isLoggedIn, cart, publicStoreDomain }) {
           <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
         </div>
         <div className="header-menu">
-          <HeaderMenu menu={menu} viewport="desktop" />
+        <CustomNav />
         </div>
       </header>
     </>
