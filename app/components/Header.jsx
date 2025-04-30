@@ -138,15 +138,16 @@ export function Header({ header, isLoggedIn, cart, publicStoreDomain }) {
             </a>
           </div>
           <div 
-            className="brand-logo" 
-            style={{ paddingRight: '125px', paddingBottom: '5px', paddingTop: '10px' }}
-          >
-            <img
-              src="https://cdn.shopify.com/s/files/1/0933/1789/0388/files/logo-dark.svg?v=1739877824"
-              alt="Brand Logo"
-              height="26"              
-              />
-          </div>
+  className="brand-logo" 
+  style={{ paddingRight: '125px', paddingBottom: '5px', paddingTop: '10px' }}
+>  <a href="/">
+  <img
+    src="https://cdn.shopify.com/s/files/1/0933/1789/0388/files/logo-dark.svg?v=1739877824"
+    alt="Brand Logo"
+    className="brand-logo-img"
+  /> </a>
+</div>
+
           <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
         </div>
         <div className="header-menu">

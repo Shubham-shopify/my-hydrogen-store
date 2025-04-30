@@ -23,206 +23,263 @@ const CustomNav = () => {
 
   
    return (
-      <div className="navwrap d-none d-lg-block" id="desktopmenu" style={{ minHeight: '45px' }}>
-        <nav className="navbar align-items-center border-bottom py-1">
-          <div className="nav-menu text-center d-flex align-items-center container-fluid">
-            {/* Navigation Menu */}
-            <ul className="nav justify-content-between" style={{ display: 'contents' }}>
-              {/* Engagement Rings */}
-              <li className="drop-down mega-menu">
-                <Link to="/engagement-rings/classic-solitaire/diamonds.html">Engagement Rings</Link>
-                <ul className="mega-menu-block">
-                  <li>
-                    <div className="row justify-content-between px-4 py-4">
-                      <div className="col-lg-5 d-flex">
-                        <div className="col-12 p-0">
-                          <div className="row row-cols-2 g-2">
-                            <ul className="col">
-                              <li>
-                                <div className="lbl-title py-1 mt-2 color-111111">Create Your Own</div>
-                              </li>
-                              <li>
-                                <Link className="lbl-text" to="/choose-diamond.html">
-                                  <img
-                                    className="img-fluid lazyload"
-                                    src="https://cdn.shopify.com/s/files/1/0933/1789/0388/files/diamond.png?v=1743166927"
-                                    alt="Start With A Diamond"
-                                    width="25"
-                                    height="25"
-                                    loading="lazy"
-                                    style={{ width: '25px', height: '25px' }}
-                                  />
-                                  <span className="ml-2">Start With A Diamond</span>
-                                </Link>
-                              </li>
-                              <li>
-                                <div className="lbl-title py-1 color-111111">Shop By Style</div>
-                              </li>
-                              {[
-                                { src: 'solitaire.png', alt: 'Classic Solitaire', text: 'Classic Solitaire', to: '/engagement-rings/classic-solitaire/diamonds.html' },
-                                { src: 'halo.png', alt: 'Halo Rings', text: 'Halo Rings', to: '/engagement-rings/halo/diamonds.html' },
-                                { src: 'side-stone.png', alt: 'Side Stone Rings', text: 'Side Stone Rings', to: '/engagement-rings/side-stone/diamonds.html' },
-                                { src: 'three-stone.png', alt: 'Trilogy Rings', text: 'Trilogy Rings', to: '/engagement-rings/three-stone/diamonds.html' },
-                                { src: 'oval.png', alt: 'oval.png', text: 'Illusion Set Rings', to: '/engagement-rings/trilogy/diamonds.html' },
-                                { src: 'cluster.png', alt: 'Cluster Rings', text: 'Cluster Rings', to: '/engagement-rings/vintage/diamonds.html' },
-                                { src: 'vintage-engagement-rings.png', alt: 'Vintage Engagement Rings', text: 'Vintage Engagement Rings', to: '/engagement-rings/vintage/diamonds.html' },
-                              ].map((item, index) => (
-                                <li key={index}>
-                                  <Link className="lbl-text" to="/engagement-rings/classic-solitaire/diamonds.html">
-                                    <img
-                                      className="img-fluid lazyload"
-                                      src={`https://cdn.shopify.com/s/files/1/0933/1789/0388/files/${item.src}?v=2024173836`}
-                                      alt={item.alt}
-                                      width="45"
-                                      height="25"
-                                      loading="lazy"
-                                    />
-                                    <span className="ml-2">{item.text}</span>
-                                  </Link>
-                                </li>
-                              ))}
-                              <li className="py-0 text-center border-radius-24 mt-2 border-111111 menu-sale-link" style={{ width: '200px' }}>
-                              <Link className="py-1 lbl-title font-weight-normal" to="/engagement-rings/classic-solitaire/diamonds.html">
-                                Engagement Rings Sale
-                              </Link>
-                            </li>
-                            </ul>
-                            <ul className="col">
-                            <li>
-                                <div className="lbl-title py-1 mt-2 color-111111 invisible">Create Your Own</div>
-                              </li>
-                              <img
-                                className="img-fluid"
-                                src="https://cdn.shopify.com/s/files/1/0933/1789/0388/files/solitaire.png?v=2024173836"
-                                loading="lazy"
-                                alt="Alt Start With A Setting"
-                                height="45"
-                                width="25"
-                              />
-                              <span className="ml-2">Start With A Setting</span>
-                              <li>
-                              <li><div class="lbl-title py-1 color-ffffff invisible">Shop By Style</div></li>
-                              </li>
-                              {[
-                                { src: 'twisted-engagement-rings.png', alt: 'Twisted Engagement Rings', text: 'Twisted Engagement Rings', to: '/engagement-rings/classic-solitaire/diamonds.html' },
-                                { src: 'unique-engagement-rings.png', alt: 'Unique Engagement Rings', text: 'Unique Engagement Rings', to: '/engagement-rings/halo/diamonds.html' },
-                                { src: 'antique-engagement-rings.png', alt: 'Antique Engagement Rings', text: 'Antique Engagement Rings', to: '/engagement-rings/side-stone/diamonds.html' },
-                                { src: 'gemstone.png', alt: 'Gemstone Rings', text: 'Gemstone Rings', to: '/engagement-rings/three-stone/diamonds.html' },
-                                { src: 'couples-rings.png', alt: 'Couples Rings', text: 'Couples Rings', to: '/engagement-rings/trilogy/diamonds.html' },
-                                { src: 'minimalist.png', alt: 'Minimalist Engagement Rings', text: 'Minimalist Engagement Rings', to: '/engagement-rings/vintage/diamonds.html' },
-                                { src: 'aquamarine.png', alt: 'Aquamarine Rings', text: 'Aquamarine Rings', to: '/engagement-rings/vintage/diamonds.html' },
-                              ].map((item, index) => (
-                                <li key={index}>
-                                  <Link className="lbl-text" to="/engagement-rings/classic-solitaire/diamonds.html">
-                                    <img
-                                      className="img-fluid lazyload"
-                                      src={`https://cdn.shopify.com/s/files/1/0933/1789/0388/files/${item.src}?v=2024173836`}
-                                      alt={item.alt}
-                                      width="45"
-                                      height="25"
-                                      loading="lazy"
-                                    />
-                                    <span className="ml-2">{item.text}</span>
-                                  </Link>
-                                </li>
-                              ))}
-                              <li className="py-0 text-center border-radius-24 mt-2 border-111111 menu-sale-link" style={{ width: '200px' }}>
-                              <Link className="py-1 lbl-title font-weight-normal" to="/engagement-rings/classic-solitaire/diamonds.html">
-                                Engagement Rings Sale
-                              </Link>
-                            </li>
-                            </ul>
-                            
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-7 d-flex">
-                      <ul className="col">
-                            <ul className="mega-menu-block">
-                  <li>
-                    <div className="row justify-content-between px-4 py-4">
-                      <div className="col-lg-7 d-flex">
-                        <div className="col-12 p-0">
-                          <div className="row row-cols-2 g-2">
-                            <ul className="col">
-                              <li>
-                                <div className="lbl-title py-1 color-111111">Shop By Style</div>
-                              </li>
-                              {[
-                                { src: 'solitaire.png', alt: 'All Engagement Rings', text: 'All Engagement Rings' },
-                                { src: 'eternity-half-rings.png', alt: 'All Wedding Rings', text: 'All Wedding Rings' },
-                                { src: 'five-stone.png', alt: 'All Diamond Rings', text: 'All Diamond Rings' },
-                                { src: 'stud.png', alt: 'All Earrings', text: 'All Earrings' },
-                                { src: 'solitaire_desk.png', alt: 'All Necklace', text: 'All Necklace', width: '30', height: '30' },
-                              ].map((item, index) => (
-                                <li key={index}>
-                                  <Link className="lbl-text" to="/engagement-rings/classic-solitaire/diamonds.html">
-                                    <img
-                                      className="img-fluid lazyload"
-                                      src={`https://cdn.shopify.com/s/files/1/0933/1789/0388/files/${item.src}?v=2024173836`}
-                                      alt={item.alt}
-                                      width={item.width || '45'}
-                                      height={item.height || '25'}
-                                      loading="lazy"
-                                    />
-                                    <span className={item.width ? 'ml-4' : 'ml-2'}>{item.text}</span>
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                            <ul className="col border-right-1 pl-3">
-                              <li>
-                                <div className="lbl-title py-1 color-111111">Shop By Metal</div>
-                              </li>
-                              {[
-                                { src: 'rose-gold.png', alt: 'Rose Gold', text: 'Rose Gold' },
-                                { src: 'white-gold.png', alt: 'White Gold', text: 'White Gold' },
-                                { src: 'yellow-gold.png', alt: 'Yellow Gold', text: 'Yellow Gold' },
-                                { src: 'platinum.png', alt: 'Platinum', text: 'Platinum' },
-                              ].map((item, index) => (
-                                <li key={index}>
-                                  <Link className="lbl-text" to="/engagement-rings/classic-solitaire/diamonds.html">
-                                    <img
-                                      className="img-fluid lazyload"
-                                      src={`https://cdn.shopify.com/s/files/1/0933/1789/0388/files/${item.src}?v=2024173836`}
-                                      alt={item.alt}
-                                      width="25"
-                                      height="25"
-                                      loading="lazy"
-                                      style={{ width: '25px', height: '25px' }}
-                                    />
-                                    <span className="ml-2">{item.text}</span>
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                            <ul className="col-6 d-flex align-items-center">
-                              <div className="d-flex flex-column position-relative ready-to-delivery-img col-12">
+    <div className="navwrap d-none d-lg-block" id="desktopmenu" style={{ minHeight: '45px' }}>
+    <nav className="navbar align-items-center border-bottom py-1">
+      <div className="nav-menu text-center d-flex align-items-center container-fluid">
+        {/* Navigation Menu */}
+        <ul className="nav justify-content-between" style={{ display: 'contents' }}>
+          {/* Engagement Rings */}
+          <li className="drop-down mega-menu">
+            <Link to="collections/engagement-rings">Engagement Rings</Link>
+            <ul className="mega-menu-block">
+              <li>
+                <div className="row justify-content-between px-4 py-4">
+                  <div className="col-lg-5 d-flex">
+                    <div className="col-12 p-0">
+                      <div className="row row-cols-2 g-2">
+                        <ul className="col">
+                          <li>
+                            <div className="lbl-title py-1 mt-2 text-gray-900">Create Your Own</div>
+                          </li>
+                          {[
+                            {
+                              src: 'diamond.png',
+                              alt: 'Start With A Diamond',
+                              text: 'Start With A Diamond',
+                              to: '/choose-diamond.html',
+                              width: 25,
+                              height: 25,
+                              style: { width: '25px', height: '25px' },
+                            },
+                          ].map((item, index) => (
+                            <li key={index}>
+                              <Link className="lbl-text" to={item.to}>
                                 <img
-                                  className="img-fluid"
-                                  src="https://cdn.shopify.com/s/files/1/0933/1789/0388/files/ready-to-delivery.jpg?v=2024173836"
+                                  className="img-fluid lazy"
+                                  src={`https://cdn.shopify.com/s/files/1/0933/1789/0388/files/${item.src}?v=1743166927`}
+                                  alt={item.alt}
+                                  width={item.width}
+                                  height={item.height}
                                   loading="lazy"
-                                  alt="Visit Our Showroom"
-                                  height="600"
-                                  width="1000"
+                                  style={item.style}
                                 />
-                                <Link to="/bespoke.html" className="btn btn-black btn-md radius-24 m-0 text-capitalize col-auto btn-w-3">
-                                  Visit Our Showroom
-                                </Link>
-                              </div>
-                            </ul>
-                          </div>
-                        </div>
+                                <span className="ml-2">{item.text}</span>
+                              </Link>
+                            </li>
+                          ))}
+                          <li>
+                            <div className="lbl-title py-1 text-gray-900">Shop By Style</div>
+                          </li>
+                          {[
+                            { src: 'solitaire.png', alt: 'Classic Solitaire', text: 'Classic Solitaire', to: '/engagement-rings/classic-solitaire/diamonds.html' },
+                            { src: 'halo.png', alt: 'Halo Rings', text: 'Halo Rings', to: '/engagement-rings/halo/diamonds.html' },
+                            { src: 'side-stone.png', alt: 'Side Stone Rings', text: 'Side Stone Rings', to: '/engagement-rings/side-stone/diamonds.html' },
+                            { src: 'three-stone.png', alt: 'Trilogy Rings', text: 'Trilogy Rings', to: '/engagement-rings/three-stone/diamonds.html' },
+                            { src: 'oval.png', alt: 'Illusion Set Rings', text: 'Illusion Set Rings', to: '/engagement-rings/trilogy/diamonds.html' },
+                            { src: 'cluster.png', alt: 'Cluster Rings', text: 'Cluster Rings', to: '/engagement-rings/vintage/diamonds.html' },
+                            { src: 'vintage-engagement-rings.png', alt: 'Vintage Engagement Rings', text: 'Vintage Engagement Rings', to: '/engagement-rings/vintage/diamonds.html' },
+                          ].map((item, index) => (
+                            <li key={index}>
+                              <Link className="lbl-text" to={item.to}>
+                                <img
+                                  className="img-fluid lazy"
+                                  src={`https://cdn.shopify.com/s/files/1/0933/1789/0388/files/${item.src}?v=2024173836`}
+                                  alt={item.alt}
+                                  width="45"
+                                  height="25"
+                                  loading="lazy"
+                                />
+                                <span className="ml-2">{item.text}</span>
+                              </Link>
+                            </li>
+                          ))}
+                          <li className="py-0 text-center border-radius-24 mt-2 border-111111 menu-sale-link" style={{ width: '200px' }}>
+                            <Link className="py-1 lbl-title font-weight-normal" to="/engagement-rings/classic-solitaire/diamonds.html">
+                              Engagement Rings Sale
+                            </Link>
+                          </li>
+                        </ul>
+                        <ul className="col">
+                          <li>
+                            <div className="lbl-title py-1 mt-2 text-gray-900 invisible">Create Your Own</div>
+                          </li>
+                          {[
+                            {
+                              src: 'solitaire.png',
+                              alt: 'Start With A Setting',
+                              text: 'Start With A Setting',
+                              to: '/choose-setting.html',
+                              width: 45,
+                              height: 25,
+                            },
+                          ].map((item, index) => (
+                            <li key={index}>
+                              <Link className="lbl-text" to={item.to}>
+                                <img
+                                  className="img-fluid lazy"
+                                  src={`https://cdn.shopify.com/s/files/1/0933/1789/0388/files/${item.src}?v=2024173836`}
+                                  alt={item.alt}
+                                  width={item.width}
+                                  height={item.height}
+                                  loading="lazy"
+                                />
+                                <span className="ml-2">{item.text}</span>
+                              </Link>
+                            </li>
+                          ))}
+                          <li>
+                            <div className="lbl-title py-1 text-gray-900 invisible">Shop By Style</div>
+                          </li>
+                          {[
+                            { src: 'twisted-engagement-rings.png', alt: 'Twisted Engagement Rings', text: 'Twisted Engagement Rings', to: '/engagement-rings/twisted/diamonds.html' },
+                            { src: 'unique-engagement-rings.png', alt: 'Unique Engagement Rings', text: 'Unique Engagement Rings', to: '/engagement-rings/unique/diamonds.html' },
+                            { src: 'antique-engagement-rings.png', alt: 'Antique Engagement Rings', text: 'Antique Engagement Rings', to: '/engagement-rings/antique/diamonds.html' },
+                            { src: 'gemstone.png', alt: 'Gemstone Rings', text: 'Gemstone Rings', to: '/engagement-rings/gemstone/diamonds.html' },
+                            { src: 'couples-rings.png', alt: 'Couples Rings', text: 'Couples Rings', to: '/engagement-rings/couples/diamonds.html' },
+                            { src: 'minimalist.png', alt: 'Minimalist Engagement Rings', text: 'Minimalist Engagement Rings', to: '/engagement-rings/minimalist/diamonds.html' },
+                            { src: 'aquamarine.png', alt: 'Aquamarine Rings', text: 'Aquamarine Rings', to: '/engagement-rings/aquamarine/diamonds.html' },
+                          ].map((item, index) => (
+                            <li key={index}>
+                              <Link className="lbl-text" to={item.to}>
+                                <img
+                                  className="img-fluid lazy"
+                                  src={`https://cdn.shopify.com/s/files/1/0933/1789/0388/files/${item.src}?v=2024173836`}
+                                  alt={item.alt}
+                                  width="45"
+                                  height="25"
+                                  loading="lazy"
+                                />
+                                <span className="ml-2">{item.text}</span>
+                              </Link>
+                            </li>
+                          ))}
+                          <li className="py-0 text-center border-radius-24 mt-2 border-111111 menu-sale-link" style={{ width: '200px' }}>
+                            <Link className="py-1 lbl-title font-weight-normal" to="/engagement-rings/classic-solitaire/diamonds.html">
+                              Engagement Rings Sale
+                            </Link>
+                          </li>
+                        </ul>
                       </div>
                     </div>
-                  </li>
-                </ul>
-                              </ul>
-                        </div>
+                  </div>
+                  <div className="col-lg-7 d-flex">
+                    <div className="col-12 p-0">
+                      <div className="row row-cols-3">
+                      <ul className="col border-r-1 pl-3 border-l-1" style={{ borderLeft: '1px solid #ccc' }}>
+                          <li>
+                            <div className="lbl-title py-1 text-gray-900">Shop By Shape</div>
+                          </li>
+                          {[
+                            { src: 'round.svg', alt: 'Round shape', text: 'Round', to: '/engagement-rings/round', width: 45, height: 25, style: { width: '45px', height: '25px' } },
+                            { src: 'princess.svg', alt: 'Princess shape', text: 'Princess', to: '/engagement-rings/princess', width: 45, height: 25, style: { width: '45px', height: '25px' } },
+                            { src: 'emerald.svg', alt: 'Emerald shape', text: 'Emerald', to: '/engagement-rings/emerald', width: 45, height: 25, style: { width: '45px', height: '25px' } },
+                            { src: 'asscher.svg', alt: 'Asscher shape', text: 'Asscher', to: '/engagement-rings/asscher', width: 45, height: 25, style: { width: '45px', height: '25px' } },
+                            { src: 'oval.svg', alt: 'Oval shape', text: 'Oval', to: '/engagement-rings/oval', width: 45, height: 25, style: { width: '45px', height: '25px' } },
+                            { src: 'pear.svg', alt: 'Pear shape', text: 'Pear', to: '/engagement-rings/pear', width: 45, height: 25, style: { width: '45px', height: '25px' } },
+                            { src: 'heart.svg', alt: 'Heart shape', text: 'Heart', to: '/engagement-rings/heart', width: 45, height: 25, style: { width: '45px', height: '25px' }, className: 'filter_heart' },
+                            { src: 'marquise.svg', alt: 'Marquise shape', text: 'Marquise', to: '/engagement-rings/marquise', width: 45, height: 25, style: { width: '45px', height: '25px' }, className: 'filter_marquise' },
+                            { src: 'cushion.svg', alt: 'Cushion shape', text: 'Cushion', to: '/engagement-rings/cushion', width: 45, height: 25, style: { width: '45px', height: '25px' }, className: 'filter_cushion' },
+                          ].map((item, index) => (
+                            <li key={index} className={item.className || ''}>
+                              <Link className="lbl-text" to={item.to}>
+                                <img
+                                  className="img-fluid lazy"
+                                  src={`https://cdn.shopify.com/s/files/1/0933/1789/0388/files/${item.src}?v=2024173836`}
+                                  alt={item.alt}
+                                  width="25"
+                                  height="25"
+                                  loading="lazy"
+                                  style={item.style}
+                                />
+                                <span className="ml-2">{item.text}</span>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                        <ul className="col border-r-1 pl-3" style={{ borderLeft: '1px solid #ccc' }}>
+                          <li>
+                            <div className="lbl-title py-1 text-gray-900">Shop By Stone Type</div>
+                          </li>
+                          {[
+                            { src: 'di.png', alt: 'Diamond stone', text: 'Diamond', to: '/engagement-rings/diamonds', width: 25, height: 25 },
+                            { src: 'di.png', alt: 'Lab Grown diamond', text: 'Lab Grown', to: '/engagement-rings/lab-grown-diamond', width: 25, height: 25 },
+                            { src: 'di.png', alt: 'Moissanite stone', text: 'Moissanite', to: '/engagement-rings/moissanite', width: 25, height: 25 },
+                            { src: 'bd.png', alt: 'Black Diamond stone', text: 'Black Diamond', to: '/engagement-rings/black-diamond', width: 25, height: 25 },
+                            { src: 'bs.png', alt: 'Blue Sapphire stone', text: 'Blue Sapphire', to: '/engagement-rings/blue-sapphire', width: 25, height: 25 },
+                            { src: 'rb.png', alt: 'Ruby stone', text: 'Ruby', to: '/engagement-rings/ruby', width: 25, height: 25 },
+                            { src: 'em.png', alt: 'Emerald stone', text: 'Emerald', to: '/engagement-rings/emeralds', width: 25, height: 25 },
+                            { src: 'tz.png', alt: 'Tanzanite stone', text: 'Tanzanite', to: '/engagement-rings/tanzanite', width: 25, height: 25 },
+                            { src: 'am.png', alt: 'Amethyst stone', text: 'Amethyst', to: '/engagement-rings/amethyst', width: 25, height: 25 },
+                            { src: 'gr.png', alt: 'Garnet stone', text: 'Garnet', to: '/engagement-rings/garnet', width: 25, height: 25 },
+                          ].map((item, index) => (
+                            <li key={index}>
+                              <Link className="lbl-text" to={item.to}>
+                                <img
+                                  className="img-fluid lazy"
+                                  src={`https://cdn.shopify.com/s/files/1/0933/1789/0388/files/${item.src}?v=2024173836`}
+                                  alt={item.alt}
+                                  width="25"
+                                  height="25"
+                                  loading="lazy"
+                                />
+                                <span className="ml-2">{item.text}</span>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                        <ul className="col pl-3" style={{ borderLeft: '1px solid #ccc' }}>
+                          <li>
+                            <div className="lbl-title py-1 text-gray-900">Shop By Metal</div>
+                          </li>
+                          {[
+                            { src: 'rose-gold.png', alt: 'Rose Gold metal', text: 'Rose Gold', to: '/engagement-rings/rose-gold', width: 25, height: 25, style: { width: '25px', height: '25px' } },
+                            { src: 'white-gold.png', alt: 'White Gold metal', text: 'White Gold', to: '/engagement-rings/white-gold', width: 25, height: 25, style: { width: '25px', height: '25px' } },
+                            { src: 'yellow-gold.png', alt: 'Yellow Gold metal', text: 'Yellow Gold', to: '/engagement-rings/yellow-gold', width: 25, height: 25, style: { width: '25px', height: '25px' } },
+                            { src: 'platinum.png', alt: 'Platinum metal', text: 'Platinum', to: '/engagement-rings/platinum', width: 25, height: 25, style: { width: '25px', height: '25px' } },
+                          ].map((item, index) => (
+                            <li key={index}>
+                              <Link className="lbl-text" to={item.to}>
+                                <img
+                                  className="img-fluid lazy"
+                                  src={`https://cdn.shopify.com/s/files/1/0933/1789/0388/files/${item.src}?v=2024173836`}
+                                  alt={item.alt}
+                                  width="25"
+                                  height="25"
+                                  loading="lazy"
+                                  style={item.style}
+                                />
+                                <span className="ml-2">{item.text}</span>
+                              </Link>
+                            </li>
+                          ))}
+                          <li>
+                            <div className="lbl-title py-1 text-gray-900">More Links</div>
+                          </li>
+                          {[
+                            { text: 'QuickShip Engagement Rings', to: '/ready-to-deliver?filter_param=10.235' },
+                            { text: 'Bespoke Engagement Rings', to: '/bespoke' },
+                            { text: "Women's Engagement Rings", to: '/engagement-rings/womens' },
+                            { text: "Men's Engagement Rings", to: '/engagement-rings/mens' },
+                            { text: '1 Carat Engagement Rings', to: '/engagement-rings/1-carat' },
+                            { text: '1.5 Carat Engagement Rings', to: '/engagement-rings/one-and-half-carat' },
+                            { text: '2 Carat Engagement Rings', to: '/engagement-rings/2-carat' },
+                            { text: '3 Carat Engagement Rings', to: '/engagement-rings/3-carat' },
+                            { text: '5 Carat Engagement Rings', to: '/engagement-rings/5-carat' },
+                          ].map((item, index) => (
+                            <li key={index}>
+                              <Link className="lbl-text" to={item.to}>
+                                <span>{item.text}</span>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                  </li>
-                </ul>
+                  </div>
+                </div>
               </li>
+            </ul>
+          </li>
   
               {/* QuickShip */}
               <li className="drop-down mega-menu">

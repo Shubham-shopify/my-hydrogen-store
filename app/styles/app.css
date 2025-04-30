@@ -177,6 +177,10 @@ button.reset:hover:not(:has(> *)) {
   align-items: center;
 }
 
+.header-menu{
+  width: 100vw !important;
+}
+
 .header-menu-mobile-toggle {
   @media (min-width: 48em) {
     display: none;
@@ -188,6 +192,13 @@ button.reset:hover:not(:has(> *)) {
   flex-direction: column;
   grid-gap: 1rem;
 }
+
+.brand-logo-img {
+  height: 26px !important;
+  max-width: 200px !important;
+  display: block;
+}
+
 
 .header-menu-desktop {
   display: none;
@@ -519,6 +530,18 @@ button.reset:hover:not(:has(> *)) {
 .account-logout {
   display: inline-block;
 }
+
+
+.nav-menu a,
+.nav-menu .lbl-text,
+.nav-menu .lbl-title {
+  text-decoration: none;
+}
+
+
+
+
+
 
 
 
