@@ -41,8 +41,8 @@ const sliderData = [
 
 export default function JewelleryOccasion() {
   useEffect(() => {
-    // Ensures the effect runs only on the client-side
-    if (typeof document !== 'undefined') {
+    // Ensure the effect runs only in the browser
+    if (typeof window !== 'undefined') {
       const ringSlider = document.getElementById('ringSlider');
       const prevButton = document.getElementById('prevButton');
       const nextButton = document.getElementById('nextButton');
