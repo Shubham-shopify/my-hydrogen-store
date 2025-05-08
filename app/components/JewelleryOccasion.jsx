@@ -1,4 +1,5 @@
 import styles from './JewelleryOccasion.module.css';
+import { useEffect } from 'react';
 
 const sliderData = [
   {
@@ -38,6 +39,41 @@ const sliderData = [
   },
 ];
 
+
+useEffect(() => {
+  const scrollButton = document.getElementById('ringSlider');
+  if (scrollButton) {
+    <div className={styles.sliderWrapper}>
+    <button
+      className={styles.scrollButton}
+      onClick={() =>
+        document.getElementById('ringSlider').scrollBy({ left: -200, behavior: 'smooth' })
+      }
+    >
+      ‹
+    </button>
+  
+    <div id="ringSlider" className={styles.slider}>
+      {sliderData.map((item, index) => (
+        <a href={item.link} className={styles.card} key={index}>
+          <img src={item.img} alt={item.name} />
+          <p>{item.name}</p>
+        </a>
+      ))}
+    </div>
+  
+    <button
+      className={styles.scrollButton}
+      onClick={() =>
+        document.getElementById('ringSlider').scrollBy({ left: 200, behavior: 'smooth' })
+      }
+    >
+      ›
+    </button>
+  </div>
+  }
+}, [])
+
 export default function JewelleryOccasion() {
   return (
     <section className={styles.wrapper}>
@@ -66,35 +102,7 @@ export default function JewelleryOccasion() {
           </div>
 
          
-          <div className={styles.sliderWrapper}>
-  <button
-    className={styles.scrollButton}
-    onClick={() =>
-      document.getElementById('ringSlider').scrollBy({ left: -200, behavior: 'smooth' })
-    }
-  >
-    ‹
-  </button>
-
-  <div id="ringSlider" className={styles.slider}>
-    {sliderData.map((item, index) => (
-      <a href={item.link} className={styles.card} key={index}>
-        <img src={item.img} alt={item.name} />
-        <p>{item.name}</p>
-      </a>
-    ))}
-  </div>
-
-  <button
-    className={styles.scrollButton}
-    onClick={() =>
-      document.getElementById('ringSlider').scrollBy({ left: 200, behavior: 'smooth' })
-    }
-  >
-    ›
-  </button>
-</div>
-
+ 
         </div>
 
         <div className={styles.right}>
