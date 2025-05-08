@@ -39,42 +39,28 @@ const sliderData = [
   },
 ];
 
-
-useEffect(() => {
-  const scrollButton = document.getElementById('ringSlider');
-  if (scrollButton) {
-    <div className={styles.sliderWrapper}>
-    <button
-      className={styles.scrollButton}
-      onClick={() =>
-        document.getElementById('ringSlider').scrollBy({ left: -200, behavior: 'smooth' })
-      }
-    >
-      ‹
-    </button>
-  
-    <div id="ringSlider" className={styles.slider}>
-      {sliderData.map((item, index) => (
-        <a href={item.link} className={styles.card} key={index}>
-          <img src={item.img} alt={item.name} />
-          <p>{item.name}</p>
-        </a>
-      ))}
-    </div>
-  
-    <button
-      className={styles.scrollButton}
-      onClick={() =>
-        document.getElementById('ringSlider').scrollBy({ left: 200, behavior: 'smooth' })
-      }
-    >
-      ›
-    </button>
-  </div>
-  }
-}, [])
-
 export default function JewelleryOccasion() {
+  useEffect(() => {
+    // Ensures the effect runs only on the client-side
+    if (typeof document !== 'undefined') {
+      const ringSlider = document.getElementById('ringSlider');
+      const prevButton = document.getElementById('prevButton');
+      const nextButton = document.getElementById('nextButton');
+
+      if (ringSlider && prevButton && nextButton) {
+        // Scroll on the "previous" button click
+        prevButton.addEventListener('click', () => {
+          ringSlider.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+
+        // Scroll on the "next" button click
+        nextButton.addEventListener('click', () => {
+          ringSlider.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+      }
+    }
+  }, []); // Empty dependency array ensures this runs only once when the component mounts
+
   return (
     <section className={styles.wrapper}>
       <div className={styles.heading}>
@@ -100,9 +86,6 @@ export default function JewelleryOccasion() {
             </p>
             <button className={styles.cta}>Engagement Rings</button>
           </div>
-
-         
- 
         </div>
 
         <div className={styles.right}>
@@ -112,6 +95,26 @@ export default function JewelleryOccasion() {
             className={styles.image}
           />
         </div>
+      </div>
+
+      {/* Slider Section */}
+      <div className={styles.sliderWrapper}>
+        <button id="prevButton" className={styles.scrollButton}>
+          ‹
+        </button>
+
+        <div id="ringSlider" className={styles.slider}>
+          {sliderData.map((item, index) => (
+            <a href={item.link} className={styles.card} key={index}>
+              <img src={item.img} alt={item.name} />
+              <p>{item.name}</p>
+            </a>
+          ))}
+        </div>
+
+        <button id="nextButton" className={styles.scrollButton}>
+          ›
+        </button>
       </div>
     </section>
   );
