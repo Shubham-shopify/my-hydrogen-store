@@ -165,7 +165,7 @@ button.reset:hover:not(:has(> *)) {
   padding: 0 1.8rem;
   position: sticky;
   gap: 15px;
-  z-index: 2;
+  z-index: 5;
   flex-direction: column;
   padding-bottom: 100px;
 }
@@ -699,10 +699,12 @@ h1 {
 
 .custom-nav-button.swiper-button-prev {
   left: 20px;
+  z-index: 2; /* Ensure it's above other elements */
 }
 
 .custom-nav-button.swiper-button-next {
-  right: 80px;
+  right: 20px;
+  z-index: 2; /* Ensure it's above other elements */
 }
 
 /* Hide disabled navigation buttons */
@@ -728,4 +730,8 @@ h1 {
 .swiper-button-prev svg, .swiper-button-next svg{
   width: 50% !important;
   height: 50% !important;
+}
+
+.swiper-button-next custom-nav-button{
+  z-index: 2!important;
 }
