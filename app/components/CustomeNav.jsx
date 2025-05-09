@@ -5,21 +5,26 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from 'react';
 
 
-useEffect(() => {
-  if (typeof window !== 'undefined') {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
-    script.async = true;
-    script.onload = () => console.log('Bootstrap JS loaded');
-    script.onerror = () => console.error('Failed to load Bootstrap JS');
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script); // Cleanup
-    };
-  }
-}, []);
+const CustomNav = () => {
+  useEffect(() => {
+    // Ensure Bootstrap JS is only loaded client-side
+    if (typeof window !== 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
+      script.async = true;
+      script.onload = () => console.log('Bootstrap JS loaded');
+      script.onerror = () => console.error('Failed to load Bootstrap JS');
+      document.body.appendChild(script);
+      return () => {
+        document.body.removeChild(script); // Cleanup
+      };
+    }
+  }, []);
 
-  
+
+
+
+
    return (
     <div className="navwrap d-none d-lg-block" id="desktopmenu" style={{ minHeight: '45px' }}>
     <nav className="navbar align-items-center border-bottom py-1">
@@ -278,7 +283,7 @@ useEffect(() => {
               </li>
             </ul>
           </li>
-  
+
               {/* QuickShip */}
               <li className="drop-down mega-menu">
                 <Link to="/engagement-rings/classic-solitaire/diamonds.html">QuickShip</Link>
@@ -362,7 +367,7 @@ useEffect(() => {
                   </li>
                 </ul>
               </li>
-  
+
               {/* Inspiration */}
               <li className="drop-down mega-menu inspiration_menu">
                 <a href="#!" className="span_a" role="button" onClick={(e) => e.preventDefault()}>
@@ -465,8 +470,8 @@ useEffect(() => {
                   </li>
                 </ul>
               </li>
-  
-             
+
+
             </ul>
 
           </div>
@@ -474,7 +479,7 @@ useEffect(() => {
       </div>
     );
   };
-  
-  
+
+
 
 export default CustomNav;
