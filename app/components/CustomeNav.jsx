@@ -5,21 +5,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from 'react';
 
 
-const CustomNav = () => {
-  useEffect(() => {
-    // Ensure Bootstrap JS is only loaded client-side
-    if (typeof window !== 'undefined') {
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
-      script.async = true;
-      script.onload = () => console.log('Bootstrap JS loaded');
-      script.onerror = () => console.error('Failed to load Bootstrap JS');
-      document.body.appendChild(script);
-      return () => {
-        document.body.removeChild(script); // Cleanup
-      };
-    }
-  }, []);
+useEffect(() => {
+  if (typeof window !== 'undefined') {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js';
+    script.async = true;
+    script.onload = () => console.log('Bootstrap JS loaded');
+    script.onerror = () => console.error('Failed to load Bootstrap JS');
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script); // Cleanup
+    };
+  }
+}, []);
 
   
    return (
